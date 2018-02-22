@@ -22,6 +22,7 @@ const hash = block =>
     .substr(10)
 
 const add = (block, prevBlock, key) => {
+  block.block = ++block.block
   block.prev = hash(prevBlock) //.hash
   block.data.date = new Date().getTime()
   block.hash = hash(block)
