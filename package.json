@@ -14,9 +14,9 @@
     "deploy": "npm run css-deploy"
   },
   "dependencies": {
-    "autoprefixer": "^7.1.5",
+    "autoprefixer": "^8.0.0",
     "bulma": "^0.6.2",
-    "bulma-extensions": "^0.7.4",
+    "bulma-extensions": "^1.0.3",
     "node-sass": "^4.7.2",
     "postcss-cli": "^5.0.0"
   },
