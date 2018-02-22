@@ -1,0 +1,29 @@
+{
+  "name": "it-wasnt-me-legal-hack-2018",
+  "version": "1.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run css-build & npm run css-watch",
+    "build": "npm run css-build && npm run css-postcss",
+    "serve": "serve dist -p 3000",
+    "css-deploy": "npm run css-build && npm run css-postcss",
+    "css-build": "node-sass src/public/_sass/main.sass src/public/css/main.css",
+    "css-postcss": "postcss --use autoprefixer --output src/public/css/main.css src/public/css/main.css",
+    "css-watch": "npm run css-build -- --watch",
+    "deploy": "npm run css-deploy"
+  },
+  "dependencies": {
+    "autoprefixer": "^7.1.5",
+    "bulma": "^0.6.2",
+    "bulma-extensions": "^0.7.4",
+    "node-sass": "^4.7.2",
+    "postcss-cli": "^5.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^5.0.0",
+    "dotenv-webpack": "^1.5.4",
+    "eslint-config-react-tools": "1.x.x",
+    "serve": "^6.1.0"
+  }
+}
