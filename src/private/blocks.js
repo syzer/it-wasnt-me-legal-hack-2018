@@ -20,7 +20,9 @@ const blocks = [
       vehicleNumber: 'XYZ',
       mileage: 23300,
       color: 'black',
-      type: 'van/suv'
+      type: 'van/suv',
+      service: 'oil',
+      approved: ['tuv', 'dektra']
     },
     prev: '!!!!!!!!!!19650120788755289113415010519474508961984651065122053261333768133'
   }
