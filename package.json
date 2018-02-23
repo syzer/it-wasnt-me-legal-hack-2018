@@ -15,11 +15,13 @@
     "test": "ava --watch"
   },
   "dependencies": {
+    "animate.css": "^3.6.1",
     "autoprefixer": "^7.1.5",
     "bulma": "^0.6.2",
     "bulma-extensions": "^0.7.4",
     "child-process-promise": "^2.2.1",
     "crypto-js": "^3.1.9-1",
+    "font-awesome": "^4.7.0",
     "koa": "^2.5.0",
     "koa-body": "^2.5.0",
     "koa-logger": "^3.1.0",
