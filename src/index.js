@@ -10,9 +10,11 @@ const koaBody = require('koa-body')
 const Koa = require('koa')
 const app = new Koa()
 const R = require('ramda')
+const _ = require('lodash')
 const exec = require('child-process-promise').exec
 const { encryptedBlocks } = require('./private/blocks')
 const { add } = require('./private/chain')
+const { getBlocks, addBlock } = require('./private/db')
 
 const port = process.env.PORT || 3008
 const ip = process.env.IP || `192.168.1.34`
@@ -59,9 +61,7 @@ app.use(async (ctx, next) => {
       ctx = body = { bla: 'laaaa' }
 
       resolve()
-
-    })
-  )
+    }))
 
 })
 
@@ -81,29 +81,20 @@ app.use(async (ctx, next) => {
   if ('POST' !== ctx.method) {
     return await next()
   }
-  console.log(ctx.request.path)
   if ('/chain' !== ctx.request.path) {
     return await next()
   }
-  console.log('le body ', ctx.request.body)
-  // ctx.body = encryptedBlocks
-  // console.log(add() )
-  const json = {
-    block: 2,
-    nonce: 12345679,
-    data: {
-      date: 1519329662134,
-      vehicleNumber: 'XYZ',
-      mileage: 23300,
-      color: 'black',
-      type: 'van/suv'
-    },
-    prev: '!!!!!!!!!!19650120788755289113415010519474508961984651065122053261333768133'
-  }
-  const result = add(json, encryptedBlocks.pop(), '123')
-  // console.warn(result)
-  ctx.status = 200
-  ctx.body = result
+  const data = ctx.request.body
+
+  await getBlocks()
+    .then(blocks => {
+      const last = blocks.pop()
+      const newBlock = add({ data }, last, '123')
+      ctx.status = 200
+      ctx.body = newBlock
+      return addBlock(newBlock)
+    })
+    .catch(console.error)
 })
 
 qrcode.toString(url, {

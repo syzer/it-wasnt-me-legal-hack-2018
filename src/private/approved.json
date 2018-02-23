@@ -1,0 +1,12 @@
+{
+  "date": 1519329662134,
+  "vehicleNumber": "XYZ",
+  "mileage": 23300,
+  "color": "black",
+  "type": "van/suv",
+  "service": "oil",
+  "approved": [
+    "tuv",
+    "dekra"
+  ]
+}
