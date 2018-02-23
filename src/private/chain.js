@@ -22,11 +22,13 @@ const hash = block =>
     .substr(10)
 
 const add = (block, prevBlock, key) => {
-  block.block = ++block.block
+  block.nonce = _.random(0, 100000)
+  block.block = _.uniqueId()
   block.prev = hash(prevBlock) //.hash
   block.data.date = new Date().getTime()
   block.hash = hash(block)
   block.data = encrypt(block, key)
+
   return block
 }
 

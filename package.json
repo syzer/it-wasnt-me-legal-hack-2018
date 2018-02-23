@@ -11,7 +11,8 @@
     "css-build": "node-sass src/public/_sass/main.sass src/public/css/main.css",
     "css-postcss": "postcss --use autoprefixer --output src/public/css/main.css src/public/css/main.css",
     "css-watch": "npm run css-build -- --watch",
-    "deploy": "npm run css-deploy"
+    "deploy": "npm run css-deploy",
+    "test": "ava --watch"
   },
   "dependencies": {
     "animate.css": "^3.6.1",
