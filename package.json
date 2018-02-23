@@ -25,12 +25,14 @@
     "koa-body": "^2.5.0",
     "koa-logger": "^3.1.0",
     "koa-static": "^4.0.2",
+    "lodash": "^4.17.5",
     "node-sass": "^4.7.2",
     "postcss-cli": "^5.0.0",
     "qrcode": "^1.2.0",
     "ramda": "^0.25.0"
   },
   "devDependencies": {
+    "ava": "^0.25.0",
     "dotenv": "^5.0.0",
     "dotenv-webpack": "^1.5.4",
     "eslint-config-react-tools": "1.x.x",
