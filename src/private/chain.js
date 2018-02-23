@@ -21,9 +21,9 @@ const hash = block =>
     .reduce(R.concat)
     .substr(10)
 
-const add = (block, prevBlock, key) => {
+const add = (block, prevBlock, key, blockNr = 0) => {
   block.nonce = _.random(0, 100000)
-  block.block = _.uniqueId()
+  block.block = blockNr + 1
   block.prev = hash(prevBlock) //.hash
   block.data.date = new Date().getTime()
   block.hash = hash(block)
