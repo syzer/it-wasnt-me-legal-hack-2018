@@ -80,7 +80,7 @@ app.use(async (ctx, next) => {
     })
 })
 
-//
+// add to chain
 app.use(async (ctx, next) => {
   if ('POST' !== ctx.method) {
     return await next()
