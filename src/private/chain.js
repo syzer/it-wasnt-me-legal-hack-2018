@@ -3,7 +3,6 @@ const CryptoJS = require('crypto-js')
 const R = require('ramda')
 const _ = require('lodash')
 
-
 const encrypt = (block, key) =>
   CryptoJS.AES.encrypt(JSON.stringify(block.data), key).toString()
 

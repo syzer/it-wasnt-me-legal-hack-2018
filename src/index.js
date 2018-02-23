@@ -65,6 +65,7 @@ app.use(async (ctx, next) => {
 
 })
 
+// get all chain
 app.use(async (ctx, next) => {
   if ('GET' !== ctx.method) {
     return await next()
@@ -73,8 +74,10 @@ app.use(async (ctx, next) => {
   if ('/chain' !== ctx.request.path) {
     return await next()
   }
-
-  ctx.body = encryptedBlocks
+  await getBlocks()
+    .then(blocks => {
+      ctx.body = blocks
+    })
 })
 
 app.use(async (ctx, next) => {
