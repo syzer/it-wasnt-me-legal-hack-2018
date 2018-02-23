@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/dashboard.css" />
+</head>
+
+<body>
+  <section class="hero is-info is-medium is-bold">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="../">
+              <img src="http://bulma.io/images/bulma-type-white.png" alt="Logo">
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item is-active">
+                Dashboard
+              </a>
+              <a class="navbar-item">
+                Edit your car
+              </a>
+              <a class="navbar-item">
+                Fill new event
+              </a>
+
+              <span class="navbar-item">
+                <a class="button is-white is-outlined is-small" href="https://github.com/dansup/bulma-templates/blob/master/templates/hero.html">
+
+                  <span>Log-out</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+
+  <div class="container-space"></div>
+
+  <section class="container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-4 is-offset-4">
+          <h1 class="title">
+            Register an car
+          </h1>
+          <div class="box">
+            <label class="label">Brand</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="VW">
+            </p>
+            <label class="label">Model</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="Golf">
+            </p>
+            <label class="label">Frame number</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="123917124">
+            </p>
+            <label class="label">Milleage</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="10000">
+            </p>
+            <label class="label">Color</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="pink">
+            </p>
+            <label class="label">initial registration</label>
+            <p class="control">
+              <input class="input" type="text" placeholder="12/12/2018">
+            </p>
+            <hr>
+            <p class="control">
+              <button class="button is-primary">Add</button>
+              <button class="button is-default">Cancel</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script async type="text/javascript" src="./js/dashboard.js"></script>
+</body>
+
+</html>
