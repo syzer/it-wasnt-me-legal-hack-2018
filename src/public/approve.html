@@ -93,10 +93,14 @@
   <script>
 
     const nonce = window.location.search.split('=').pop()
-    const goDashboard = () =>
+
+    const goDashboard = () => {
+      document.getElementById('approve').classList.add('is-loading')
+
       setTimeout(() => {
         window.location = '/dashboard.html'
       }, 3000)
+    }
 
     axios.get(`/chain/${nonce}`)
       .then(({ data }) => data.data)

@@ -11,8 +11,6 @@ const Koa = require('koa')
 const app = new Koa()
 const R = require('ramda')
 const _ = require('lodash')
-const exec = require('child-process-promise').exec
-const { encryptedBlocks } = require('./private/blocks')
 const { add, decrypt } = require('./private/chain')
 const { getBlocks, addBlock } = require('./private/db')
 

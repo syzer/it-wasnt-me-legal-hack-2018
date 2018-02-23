@@ -25,4 +25,9 @@ circle[fill="lightgreen"] {
 
 .yellow {
   fill-opacity: 0.2;
+  z-index: -10;
+}
+
+.lightgreen {
+  z-index: 100 !important;
 }

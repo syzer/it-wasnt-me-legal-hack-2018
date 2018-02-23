@@ -80,7 +80,7 @@
                 </p>
               </div>
               <div class="column">
-
+                <canvas id="canvas" class="qrcode-image"></canvas>
               </div>
             </div>
 
@@ -98,7 +98,18 @@
 
       </div>
     </div>
+    <script src="/qrcode.min.js"></script>
+    <script>
+      QRCode.toCanvas(document.getElementById('canvas'), window.location.href + '/kfz-kaufvertrag.pdf', { version: 9 }, function (error) {
+        if (error) console.error(error)
+        console.log('success!')
+      })
+    </script>
     <script async type="text/javascript" src="./js/dashboard.js"></script>
+    <div class="column">
+      <a href="/kfz-kaufvertrag.pdf" target="_blank" style="width: 100%;" class="button is-info is-large">Download</a>
+    </div>
+
 </body>
 
 </html>
