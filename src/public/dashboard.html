@@ -6,216 +6,207 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="./css/main.css" />
-  <link rel="stylesheet" href="./css/dashboard.css" />
-  <link rel="stylesheet" href="./css/letters.css" />
+  <link rel="stylesheet" href="./css/main.css"/>
+  <link rel="stylesheet" href="./css/dashboard.css"/>
+  <link rel="stylesheet" href="./css/letters.css"/>
 </head>
 
 <body>
-  <section class="hero is-info is-bold">
-    <div class="hero-head">
-      <nav class="navbar">
-        <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="../">
-              <h2 style="font-size: 1.5em; font-weight: 900;">CarTruth</h2>
-            </a>
-            <span class="navbar-burger burger" data-target="navbarMenu">
+<section class="hero is-info is-bold">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="../">
+            <h2 style="font-size: 1.5em; font-weight: 900;">CarTruth</h2>
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
               <span></span>
               <span></span>
               <span></span>
             </span>
-          </div>
-          <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-end">
-              <a href="/dashboard.html" class="navbar-item is-active">
-                Dashboard
-              </a>
-              <a href="/edit_car.html" class="navbar-item">
-                Edit your car
-              </a>
-              <a href="/sell.html" class="navbar-item">
-                Sell car
-              </a>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <a href="/dashboard.html" class="navbar-item is-active">
+              Dashboard
+            </a>
+            <a href="/edit_car.html" class="navbar-item">
+              Edit your car
+            </a>
+            <a href="/sell.html" class="navbar-item">
+              Sell car
+            </a>
 
-              <span class="navbar-item">
+            <span class="navbar-item">
                 <a class="button is-white is-outlined is-small" href="/login.html">
                   <span>Log-out</span>
                 </a>
               </span>
-            </div>
           </div>
         </div>
-      </nav>
-    </div>
-    <div class="hero-body">
-      <div class="container has-text-centered">
+      </div>
+    </nav>
+  </div>
+  <div class="hero-body">
+    <div class="container has-text-centered">
 
 
-
-        <a class="button is-white is-large">
+      <a class="button is-white is-large">
           <span class="icon is-small">
             <i class="fa fa-plus"></i>
           </span>
-          <span>Service</span>
-        </a>
-        <a class="button is-white is-large">
-          <div style="clear: both; width: 100;">
+        <span>Service</span>
+      </a>
+      <a class="button is-white is-large">
+        <div style="clear: both; width: 100;">
             <span class="icon is-small">
               <i class="fa fa-plus"></i>
             </span>
-          </div>
-          Milleage
+        </div>
+        Milleage
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+  <div class="tile is-ancestor has-text-centered">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">brand: VW</p>
+        <p class="subtitle">model: Golf</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">milleage: 60,000</p>
+        <p class="subtitle">year: 2001</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">color: Pink</p>
+        <p class="subtitle"></p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">hash number:</p>
+        <p class="subtitle">000012fa9b916eb9078f8d98a7864e697ae83ed54f5146bd84452cdafd043c19</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="">
+  <p class="has-text-centered">
+    <span class="tag is-primary">Detailed information</span> updates the table updates frequently
+  </p>
+</div>
+
+
+<section class="container">
+  <div class="columns features">
+    <table class="table is-fullwidth is-hoverable">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Km</th>
+        <th>Event</th>
+        <th>Price</th>
+        <th>Approved by</th>
+      </tr>
+      </thead>
+      <tfoot>
+      <tr>
+        <th>Date</th>
+        <th>Km</th>
+        <th>Event</th>
+        <th>Price</th>
+        <th>Approved by</th>
+      </tr>
+      </tfoot>
+      <tbody id="table">
+      <tr>
+        <th>12.12.18</th>
+        <td>10000</strong>
+        <td>Crash test 100km/h</td>
+        <td>10 €</td>
+        <td>TUV</td>
+      </tr>
+      <tr>
+        <th>12.12.18</th>
+        <td>10000</strong>
+        <td>Crash test 100km/h</td>
+        <td>10 €</td>
+        <td>TUV</td>
+      </tr>
+      <tr>
+        <th>12.12.18</th>
+        <td>10000</strong>
+        <td>Crash test 100km/h</td>
+        <td>10 €</td>
+        <td>TUV</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+<div class="section">
+  <div id="graph"/>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        It wasn't me
+      </p>
+      <p>
+        <a class="icon" href="https://github.com/dansup/bulma-templates">
+          <i class="fa fa-github"></i>
         </a>
-      </div>
+      </p>
     </div>
-
-  </section>
-
-  <section class="section">
-    <div class="tile is-ancestor has-text-centered">
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <p class="title">brand: VW</p>
-          <p class="subtitle">model: Golf</p>
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <p class="title">milleage: 60,000</p>
-          <p class="subtitle">year: 2001</p>
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <p class="title">color: Pink</p>
-          <p class="subtitle"></p>
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <p class="title">hash number:</p>
-          <p class="subtitle">000012fa9b916eb9078f8d98a7864e697ae83ed54f5146bd84452cdafd043c19</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <div class="">
-    <p class="has-text-centered">
-      <span class="tag is-primary">Detailed information</span> updates the table updates frequently
-    </p>
   </div>
-
-
-
-  <section class="container">
-    <div class="columns features">
-      <table class="table is-fullwidth is-hoverable">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Km</th>
-            <th>Event</th>
-            <th>Price</th>
-            <th>Approved by</th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <th>Date</th>
-            <th>Km</th>
-            <th>Event</th>
-            <th>Price</th>
-            <th>Approved by</th>
-          </tr>
-        </tfoot>
-        <tbody id="table">
-          <tr>
-            <th>12.12.18</th>
-            <td>10000</strong>
-              <td>Crash test 100km/h </td>
-              <td>10 €</td>
-              <td>TUV</td>
-          </tr>
-          <tr>
-            <th>12.12.18</th>
-            <td>10000</strong>
-              <td>Crash test 100km/h </td>
-              <td>10 €</td>
-              <td>TUV</td>
-          </tr>
-          <tr>
-            <th>12.12.18</th>
-            <td>10000</strong>
-              <td>Crash test 100km/h </td>
-              <td>10 €</td>
-              <td>TUV</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </section>
-  <div class="section">
-    <div id="graph" />
-  </div>
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          It wasn't me
-        </p>
-        <p>
-          <a class="icon" href="https://github.com/dansup/bulma-templates">
-            <i class="fa fa-github"></i>
-          </a>
-        </p>
-      </div>
-    </div>
-  </footer>
-  <script async type="text/javascript" src="./js/dashboard.js"></script>
-  <script src="./js/charming.min.js"></script>
-  <script src="./js/anime.min.js"></script>
-  <script src="./js/wordFx.js"></script>
-  <script src="./js/graph.js"></script>
-  <script type="text/javascript" src="./js/axios.js"></script>
-  <script>
-    function ready(fn) {
-      if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-        fn();
-      } else {
-        document.addEventListener('DOMContentLoaded', fn);
-      }
+</footer>
+<script async type="text/javascript" src="./js/dashboard.js"></script>
+<script src="./js/charming.min.js"></script>
+<script src="./js/anime.min.js"></script>
+<script src="./js/wordFx.js"></script>
+<script src="./js/graph.js"></script>
+<script type="text/javascript" src="./js/axios.js"></script>
+<script>
+  function ready(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
     }
+  }
 
-    // function b64DecodeUnicode(str) {
-    //   // Going backwards: from bytestream, to percent-encoding, to original string.
-    //   return decodeURIComponent(atob(str).split('').map(function (c) {
-    //     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    //   }).join(''));
-    // }
+  ready(() => {
+    axios.get('/chain')
+      .then(({ data }) => {
 
-    ready(() => {
-      axios.get('/chain').then(({
-        data
-      }) => {
         const table = data.map(({ data }) => {
           const date = new Date(data.date)
-          const dateString = date.getUTCFullYear() +"/"+ (date.getUTCMonth()+1) +"/"+ date.getUTCDate()
-          const mileage = typeof (data.milleage || data.mileage) === 'string' ? (data.milleage || data.mileage) : '-'
+          const dateString = date.getUTCFullYear() + "/" + (date.getUTCMonth() + 1) + "/" + date.getUTCDate()
+          const mileage = typeof (data.milleage || data.mileage) === 'string' ? (data.milleage || data.mileage) : ''
           const service = typeof (data.milleage || data.mileage) === 'object' ? '-' : (data.service || '-')
 
-          return `<tr>
-            <td>${dateString}</td>
-            <td>${mileage}</td>
-            <td>${service}</td>
-            <td>10 €</td>
-            <td>${(data.approved || []).join(' ')}</td>
-          </tr>`
-        }).join(' ')
+          return {
+            date: data.date,
+            dateString,
+            mileage,
+            service,
+            approved: (data.approved || []).join(' ')
+          }
+        })
 
-        graph('graph', data, 'date', 'milleage', {
+        graph('graph', table, 'date', 'mileage', {
           color: {
             graph: 'lightblue',
             serviceIconBg: 'yellow',
@@ -227,9 +218,17 @@
         })
 
         document.getElementById('table').innerHTML = table
+          .map(e => `<tr>
+            <td>${e.dateString}</td>
+            <td>${e.mileage}</td>
+            <td>${e.service}</td>
+            <td>10 €</td>
+            <td>${e.approved}</td>
+          </tr>`)
+          .join(' ')
       })
-    })
-  </script>
+  })
+</script>
 </body>
 
 </html>
