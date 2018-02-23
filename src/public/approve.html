@@ -52,19 +52,21 @@
       <div class="column is-8">
         <div class="card">
           <div class="card-content">
-            <p class="title">
-              milleage: 90,0000
-            </p>
+            <div id="mileage">
+              <p class="title">
+                mileage: 90,0000
+              </p>
+            </div>
             <p class="subtitle">
               vin number: 9124951 <br/>
               car: VW,  model: Golf
             </p>
             <div class="columns">
               <div class="column">
-                <a style="width: 100%;" class="button is-primary is-large">Approve</a>
+                <a id="approve" style="width: 100%;" class="button is-primary is-large">Approve</a>
               </div>
               <div class="column">
-                <a style="width: 100%;" class="button is-danger is-large">Decline</a>
+                <a id="reject" style="width: 100%;" class="button is-danger is-large">Decline</a>
               </div>
             </div>
           </div>
@@ -73,6 +75,57 @@
       </div>
     </div>
     <script async type="text/javascript" src="./js/dashboard.js"></script>
+    <script async type="text/javascript" src="./js/axios.js"></script>
+  </section>
+  <script src="/qrcode.min.js"></script>
+
+  <script>
+    QRCode.toCanvas(document.getElementById('canvas'), window.location.href, { version: 9 }, function (error) {
+      if (error) console.error(error)
+      console.log('success!')
+    })
+  </script>
+
+  <script>
+
+    const nonce = window.location.search.split('=').pop()
+    const goDashboard = () =>
+      setTimeout(() => {
+        window.location = '/dashboard.html'
+      }, 3000)
+
+    axios.get(`/chain/${nonce}`)
+      .then(({ data }) => data.data)
+      .then(contract => {
+        const milage = contract.milleage || contract.mileage
+
+        document.getElementById('mileage').innerHTML = `
+        <p class="title">
+          mileage: ${milage} km
+        </p>`
+
+        return contract
+      })
+      .then(contract => {
+        console.log('contract', contract)
+        contract.approved = contract.approved || []
+        contract.rejected = contract.rejected || []
+
+        document.getElementById('approve').onclick = () => {
+          contract.approved.push('TUV')
+          axios.post('/chain', contract).then(goDashboard)
+        }
+
+        document.getElementById('reject').onclick = () => {
+          contract.rejected.push('TUV')
+          axios.post('/chain', contract).then(goDashboard)
+        }
+      })
+      .then(console.log)
+      .catch(console.error)
+    // TODO
+    //
+  </script>
 </body>
 
 </html>
