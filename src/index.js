@@ -13,7 +13,7 @@ const R = require('ramda')
 const _ = require('lodash')
 const exec = require('child-process-promise').exec
 const { encryptedBlocks } = require('./private/blocks')
-const { add } = require('./private/chain')
+const { add, decrypt } = require('./private/chain')
 const { getBlocks, addBlock } = require('./private/db')
 
 const port = process.env.PORT || 3008
@@ -22,6 +22,13 @@ const url = `https://${ip}:${port}`
 
 app.use(logger())
 app.use(koaBody({ multipart: true }))
+
+const decode = block => {
+  // decrypt for demo, do not use for production!
+  block.data = decrypt(block.data, '123')
+
+  return block
+}
 
 // 404
 app.use(async (ctx, next) => {
@@ -76,7 +83,23 @@ app.use(async (ctx, next) => {
   }
   await getBlocks()
     .then(blocks => {
-      ctx.body = blocks
+      ctx.body = blocks.map(decode)
+    })
+})
+
+// get the the nonce for tuv to approve
+app.use(async (ctx, next) => {
+  if ('GET' !== ctx.method) {
+    return await next()
+  }
+  if (!ctx.request.path.startsWith('/chain/')) {
+    return await next()
+  }
+  const id = ctx.request.path.split('/chain/').pop()
+
+  await getBlocks()
+    .then(blocks => {
+      ctx.body = decode(blocks.find(({ nonce }) => String(nonce) === id)) || 'not found'
     })
 })
 
@@ -108,6 +131,5 @@ qrcode.toString(url, {
   .then(console.log)
   .catch(console.error)
 
-// https.createServer(options, app.callback()).listen(port)
 http.createServer(app.callback()).listen(port)
 console.log(`listening on port ${url}`)
