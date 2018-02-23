@@ -11,7 +11,7 @@ const Koa = require('koa')
 const app = new Koa()
 const R = require('ramda')
 const _ = require('lodash')
-const { add, decrypt } = require('./private/chain')
+const { add, decrypt, hash } = require('./private/chain')
 const { getBlocks, addBlock } = require('./private/db')
 
 const port = process.env.PORT || 3008
@@ -118,6 +118,27 @@ app.use(async (ctx, next) => {
       ctx.status = 200
       ctx.body = newBlock
       return addBlock(newBlock)
+    })
+    .catch(console.error)
+})
+
+// is it legit
+// nodemon -w ./ -e js -x curl 'http://localhost:3008/islegit' -H 'Content-Type: application/json'  --data-binary '@src/private/tampered.blocks.json' -d 3
+// [true,false,true,true,true]
+app.use(async (ctx, next) => {
+  if ('POST' !== ctx.method) {
+    return await next()
+  }
+  if ('/islegit' !== ctx.request.path) {
+    return await next()
+  }
+
+  const chain = ctx.request.body
+
+  await getBlocks()
+    .then(blocks => {
+      ctx.body = chain.map((e, i) => hash(e) === e.hash)
+      ctx.status = 200
     })
     .catch(console.error)
 })
