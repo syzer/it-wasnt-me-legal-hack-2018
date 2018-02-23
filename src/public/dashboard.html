@@ -176,6 +176,33 @@
   <script src="./js/charming.min.js"></script>
   <script src="./js/anime.min.js"></script>
   <script src="./js/wordFx.js"></script>
+  <script type="text/javascript" src="./js/axios.js"></script>
+  <script>
+    function ready(fn) {
+      if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        fn();
+      } else {
+        document.addEventListener('DOMContentLoaded', fn);
+      }
+    }
+
+    // function b64DecodeUnicode(str) {
+    //   // Going backwards: from bytestream, to percent-encoding, to original string.
+    //   return decodeURIComponent(atob(str).split('').map(function (c) {
+    //     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    //   }).join(''));
+    // }
+
+    ready(() => {
+      axios.get('/chain').then(({
+        data
+      }) => {
+        data.forEach(item => {
+          console.log(item)
+        })
+      })
+    })
+  </script>
 </body>
 
 </html>

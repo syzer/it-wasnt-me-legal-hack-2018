@@ -58,32 +58,16 @@
       <div class="columns is-vcentered">
         <div class="column is-4 is-offset-4">
           <h1 class="title">
-            Register an car
+            Add data
           </h1>
           <div class="box">
-            <label class="label">Brand</label>
-            <p class="control">
-              <input id="brand" value="VW" class="input" type="text" placeholder="VW">
-            </p>
-            <label class="label">Model</label>
-            <p class="control">
-              <input id="model" class="input" type="text" placeholder="Golf">
-            </p>
-            <label class="label">Frame number</label>
-            <p class="control">
-              <input id="frame" value="123917124" class="input" type="text" placeholder="123917124">
-            </p>
             <label class="label">Milleage</label>
             <p class="control">
-              <input id="milleage" value="10000" class="input" type="text" placeholder="10000">
+              <input id="milleage" class="input" type="text" placeholder="10000">
             </p>
-            <label class="label">Color</label>
+            <label class="label">Service</label>
             <p class="control">
-              <input id="color" value="color" class="input" type="text" placeholder="pink">
-            </p>
-            <label class="label">initial registration</label>
-            <p class="control">
-              <input id="date" value="30/01/2018" class="input" type="text" placeholder="12/12/2018">
+              <input id="service" class="input" type="text" placeholder="brake check">
             </p>
             <hr>
             <p class="control">
@@ -99,14 +83,11 @@
     <script>
       document.getElementById('add').onclick = () => {
         axios.post('/chain', { 
-          brand: document.getElementById('brand'),
-          model: document.getElementById('model'),
-          frame: document.getElementById('frame'),
           milleage: document.getElementById('milleage'),
-          color: document.getElementById('color'),
+          service: document.getElementById('service'),
         })
         .then(() => {
-          window.location = '/add_data.html'
+          window.location = '/dashboard.html'
         })
       }
     </script>
