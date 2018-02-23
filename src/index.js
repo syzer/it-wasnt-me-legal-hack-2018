@@ -80,6 +80,7 @@ app.use(async (ctx, next) => {
     })
 })
 
+//
 app.use(async (ctx, next) => {
   if ('POST' !== ctx.method) {
     return await next()
@@ -92,7 +93,7 @@ app.use(async (ctx, next) => {
   await getBlocks()
     .then(blocks => {
       const last = blocks.pop()
-      const newBlock = add({ data }, last, '123')
+      const newBlock = add({ data }, last, '123', blocks.length)
       ctx.status = 200
       ctx.body = newBlock
       return addBlock(newBlock)
