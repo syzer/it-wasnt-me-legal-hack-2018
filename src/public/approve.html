@@ -11,141 +11,68 @@
 </head>
 
 <body>
-<section class="hero is-info is-medium is-bold">
-  <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="../">
-            <img src="http://bulma.io/images/bulma-type-white.png" alt="Logo">
-          </a>
-          <span class="navbar-burger burger" data-target="navbarMenu">
+  <section class="hero is-info is-medium is-bold">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="../">
+              <h2 style="font-size: 1.5em; font-weight: 900;">CarTruth</h2>
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenu">
               <span></span>
               <span></span>
               <span></span>
             </span>
-        </div>
-        <div id="navbarMenu" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item is-active">
-              Dashboard
-            </a>
-            <a class="navbar-item">
-              Edit your car
-            </a>
-            <a class="navbar-item">
-              Fill new event
-            </a>
+          </div>
+          <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+              <a href="/dashboard.html" class="navbar-item is-active">
+                Dashboard
+              </a>
+              <a href="/edit_car.html" class="navbar-item">
+                Edit your car
+              </a>
 
-            <span class="navbar-item">
-                <a class="button is-white is-outlined is-small"
-                   href="https://github.com/dansup/bulma-templates/blob/master/templates/hero.html">
-
+              <span class="navbar-item">
+                <a class="button is-white is-outlined is-small" href="/login.html">
                   <span>Log-out</span>
                 </a>
               </span>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-</section>
-
-
-<section class="container">
-  <div class="columns is-centered features">
-
-      <div class="card">
-        <div class="card-content">
-          <div class="columns">
-            <div class="column">
-              <div style="
-              display:flex;
-              flex: 1; flex-direction: column;
-              align-items: center">
-                <div id="mileage">
-                  <p class="title">
-                    mileage: 90,0000
-                  </p>
-                </div>
-                <p class="subtitle">
-                  vin number: 9124951 <br/>
-                  car: VW, model: Golf
-                </p>
-              </div>
-
-            </div>
-            <div class="column">
-              <canvas id="canvas" class="qrcode-image"></canvas>
-            </div>
-
-          </div>
-
-          <div class="columns">
-            <div class="column">
-              <a id="approve" style="width: 100%;" class="button is-primary is-large">Approve</a>
-            </div>
-            <div class="column">
-              <a id="reject" style="width: 100%;" class="button is-danger is-large">Decline</a>
             </div>
           </div>
         </div>
-      </div>
-
+      </nav>
     </div>
-  </div>
-  <script async type="text/javascript" src="./js/dashboard.js"></script>
-  <script async type="text/javascript" src="./js/axios.js"></script>
-</section>
-<script src="/qrcode.min.js"></script>
+  </section>
 
-<script>
-  QRCode.toCanvas(document.getElementById('canvas'), window.location.href, { version: 9 }, function (error) {
-    if (error) console.error(error)
-    console.log('success!')
-  })
-</script>
 
-<script>
+  <section class="container">
+    <div class="columns is-centered features">
+      <div class="column is-8">
+        <div class="card">
+          <div class="card-content">
+            <p class="title">
+              milleage: 90,0000
+            </p>
+            <p class="subtitle">
+              vin number: 9124951 <br/>
+              car: VW,  model: Golf
+            </p>
+            <div class="columns">
+              <div class="column">
+                <a style="width: 100%;" class="button is-primary is-large">Approve</a>
+              </div>
+              <div class="column">
+                <a style="width: 100%;" class="button is-danger is-large">Decline</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  const nonce = window.location.search.split('=').pop()
-  const goDashboard = () =>
-    setTimeout(() => {
-      window.location = '/dashboard.html'
-    }, 3000)
-
-  axios.get(`/chain/${nonce}`)
-    .then(({ data }) => data.data)
-    .then(contract => {
-      const milage = contract.milleage || contract.mileage
-
-      document.getElementById('mileage').innerHTML = `
-        <p class="title">
-          mileage: ${milage} km
-        </p>`
-
-      return contract
-    })
-    .then(contract => {
-      console.log('contract', contract)
-      contract.approved = contract.approved || []
-      contract.rejected = contract.rejected || []
-
-      document.getElementById('approve').onclick = () => {
-        contract.approved.push('TUV')
-        axios.post('/chain', contract).then(goDashboard)
-      }
-
-      document.getElementById('reject').onclick = () => {
-        contract.rejected.push('TUV')
-        axios.post('/chain', contract).then(goDashboard)
-      }
-    })
-    .then(console.log)
-    .catch(console.error)
-  // TODO
-  //
-</script>
+      </div>
+    </div>
+    <script async type="text/javascript" src="./js/dashboard.js"></script>
 </body>
 
 </html>
