@@ -52,7 +52,7 @@
       <div class="column is-8">
         <div class="card">
           <div class="card-content">
-            <div class="collumns">
+            <div class="columns">
               <div class="column">
                 <p class="subtitle">
                   model
@@ -100,7 +100,7 @@
     </div>
     <script src="/qrcode.min.js"></script>
     <script>
-      QRCode.toCanvas(document.getElementById('canvas'), window.location.href + '/kfz-kaufvertrag.pdf', { version: 9 }, function (error) {
+      QRCode.toCanvas(document.getElementById('canvas'), window.location.origin + '/kfz-kaufvertrag.pdf', { version: 9 }, function (error) {
         if (error) console.error(error)
         console.log('success!')
       })
