@@ -99,11 +99,11 @@
     <script>
       document.getElementById('add').onclick = () => {
         axios.post('/chain', { 
-          brand: document.getElementById('brand'),
-          model: document.getElementById('model'),
-          frame: document.getElementById('frame'),
-          milleage: document.getElementById('milleage'),
-          color: document.getElementById('color'),
+          brand: document.getElementById('brand').value,
+          model: document.getElementById('model').value,
+          frame: document.getElementById('frame').value,
+          milleage: document.getElementById('milleage').value,
+          color: document.getElementById('color').value,
         })
         .then(() => {
           window.location = '/add_data.html'

@@ -131,7 +131,7 @@
             <th>Approved by</th>
           </tr>
         </tfoot>
-        <tbody>
+        <tbody id="table">
           <tr>
             <th>12.12.18</th>
             <td>10000</strong>
@@ -158,6 +158,9 @@
     </div>
 
   </section>
+  <div class="section">
+    <div id="graph" />
+  </div>
   <footer class="footer">
     <div class="container">
       <div class="content has-text-centered">
@@ -176,6 +179,7 @@
   <script src="./js/charming.min.js"></script>
   <script src="./js/anime.min.js"></script>
   <script src="./js/wordFx.js"></script>
+  <script src="./js/graph.js"></script>
   <script type="text/javascript" src="./js/axios.js"></script>
   <script>
     function ready(fn) {
@@ -197,9 +201,31 @@
       axios.get('/chain').then(({
         data
       }) => {
-        data.forEach(item => {
-          console.log(item)
+        const table = data.map(({ data }) => {
+          const date = new Date(data.date)
+          var dateString = date.getUTCFullYear() +"/"+ (date.getUTCMonth()+1) +"/"+ date.getUTCDate()
+
+          return `<tr>
+            <td>${dateString}</td>
+            <td>${data.milleage}</td>
+            <td>${data.service || 'empty'}</td>
+            <td>10 €</td>
+            <td>${(data.approved || []).join(' ')}</td>
+          </tr>`
+        }).join(' ')
+
+        graph('graph', data, 'date', 'milleage', {
+          color: {
+            graph: 'lightblue',
+            serviceIconBg: 'yellow',
+            serviceIcon: 'gray',
+            approvedIconBg: 'lightgreen',
+            approvedIcon: 'white',
+            axis: 'purple',
+          },
         })
+
+        document.getElementById('table').innerHTML = table
       })
     })
   </script>

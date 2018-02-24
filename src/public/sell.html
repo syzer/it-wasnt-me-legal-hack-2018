@@ -17,7 +17,7 @@
         <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item" href="../">
-              <img src="/bulma-type-white.png" alt="Logo">
+              <img src="http://bulma.io/images/bulma-type-white.png" alt="Logo">
             </a>
             <span class="navbar-burger burger" data-target="navbarMenu">
               <span></span>
@@ -51,51 +51,32 @@
   </section>
 
 
-  <div class="container-space"></div>
-
   <section class="container">
-    <div class="container">
-      <div class="columns is-vcentered">
-        <div class="column is-4 is-offset-4">
-          <h1 class="title">
-            Add data
-          </h1>
-          <div class="box">
-            <label class="label">Milleage</label>
-            <p class="control">
-              <input id="milleage" class="input" type="text" placeholder="10000">
+    <div class="columns is-centered features">
+      <div class="column is-8">
+        <div class="card">
+          <div class="card-content">
+            <p class="title">
+              milleage: 90,0000
             </p>
-            <label class="label">Service</label>
-            <p class="control">
-              <input id="service" class="input" type="text" placeholder="brake check">
+            <p class="subtitle">
+              vin number: 9124951 <br/>
+              car: VW,  model: Golf
             </p>
-            <hr>
-            <p class="control">
-              <button id="add" class="button is-primary">Add</button>
-              <button class="button is-default">Cancel</button>
-            </p>
+            <div class="columns">
+              <div class="column">
+                <a style="width: 100%;" class="button is-primary is-large">Approve</a>
+              </div>
+              <div class="column">
+                <a style="width: 100%;" class="button is-danger is-large">Decline</a>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
     <script async type="text/javascript" src="./js/dashboard.js"></script>
-    <script async type="text/javascript" src="./js/axios.js"></script>
-    <script>
-      document.getElementById('add').onclick = () => {
-        console.log({ 
-          milleage: document.getElementById('milleage').value || 0,
-          service: document.getElementById('service').value || '',
-        })
-
-        axios.post('/chain', { 
-          milleage: document.getElementById('milleage').value || 0,
-          service: document.getElementById('service').value || '',
-        })
-        .then(() => {
-          window.location = '/dashboard.html'
-        })
-      }
-    </script>
 </body>
 
 </html>
