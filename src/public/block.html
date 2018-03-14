@@ -114,12 +114,11 @@
     try {
       axios.post('/islegit', data)  
       .then((response) => {
-        console.log(response.data)
-
         for (let i = 0; i < length-1; i++) {
           document.getElementById(i).classList.remove('red')
         }
-        document.getElementById(index).classList.add('red')
+
+        response.data.forEach((value, index) => { !value && document.getElementById(index).classList.add('red') } )
       })
     } catch (error) {
       console.log(error)
@@ -159,11 +158,11 @@
             const index = Number(e.target.id)
             // const newData = [ ...data ]
 
-            console.log({ ...newData[index] })
+            // console.log({ ...newData[index] })
 
             newData[index] = { ...newData[index], data: { ...JSON.parse(e.target.value) } } 
 
-            console.log({ ...newData[index] })
+            // console.log({ ...newData[index] })
 
             changeText(newData, index, areas.length)
           }, false)
