@@ -58,12 +58,12 @@
           <div class="card-content">
             <div id="mileage">
               <p class="title">
-                mileage: 90,0000
+                Mileage: 90,0000 km
               </p>
             </div>
             <p class="subtitle">
-              vin number: 9124951 <br/>
-              car: VW,  model: Golf
+              Vin number: 9124951 <br/>
+              Car: VW,  Model: Golf
             </p>
             <div class="columns">
               <div class="column">
@@ -120,12 +120,12 @@
         contract.rejected = contract.rejected || []
 
         document.getElementById('approve').onclick = () => {
-          contract.approved.push('TUV')
+          contract.approved.push('TÜV')
           axios.post('/chain', contract).then(goDashboard)
         }
 
         document.getElementById('reject').onclick = () => {
-          contract.rejected.push('TUV')
+          contract.rejected.push('TÜV')
           axios.post('/chain', contract).then(goDashboard)
         }
       })
