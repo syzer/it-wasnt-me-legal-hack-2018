@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css"/>
+  <link rel="stylesheet" href="./css/dashboard.css"/>
+  <link rel="stylesheet" href="./css/letters.css"/>
+</head>
+
+<body>
+
+<style>
+  .red {
+    color: red;
+  }
+
+</style>
+
+<section class="hero is-info is-bold">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="../">
+            <h2 style="font-size: 1.5em; font-weight: 900;">CarTruth</h2>
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <a href="/dashboard.html" class="navbar-item is-active">
+              Dashboard
+            </a>
+            <a href="/edit_car.html" class="navbar-item">
+              Edit your car
+            </a>
+            <a href="/sell.html" class="navbar-item">
+              Sell car
+            </a>
+
+            <span class="navbar-item">
+                <a class="button is-white is-outlined is-small" href="/login.html">
+                  <span>Log-out</span>
+                </a>
+              </span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+
+</section>
+
+
+
+<section class="container">
+  <div class="columns features">
+    <table class="table is-fullwidth is-hoverable">
+      <thead>
+      <tr>
+        <th>Blockchain</th>
+      </tr>
+      </thead>
+      <tbody id="table">
+      </tbody>
+    </table>
+  </div>
+
+</section>
+<div class="section">
+  <div id="graph"/>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        It wasn't me
+      </p>
+      <p>
+        <a class="icon" href="https://github.com/dansup/bulma-templates">
+          <i class="fa fa-github"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+<script async type="text/javascript" src="./js/dashboard.js"></script>
+<script src="./js/charming.min.js"></script>
+<script src="./js/anime.min.js"></script>
+<script src="./js/wordFx.js"></script>
+<script src="./js/graph.js"></script>
+<script type="text/javascript" src="./js/axios.js"></script>
+<script>
+  function ready(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+      fn();
+    } else {
+      document.addEventListener('DOMContentLoaded', fn);
+    }
+  }
+
+  
+
+  const changeText = (data, index, length) => {
+    try {
+      axios.post('/islegit', data)  
+      .then((response) => {
+        console.log(response.data)
+
+        for (let i = 0; i < length-1; i++) {
+          document.getElementById(i).classList.remove('red')
+        }
+        document.getElementById(index).classList.add('red')
+      })
+    } catch (error) {
+      console.log(error)
+      
+      for (let i = Number(index); i < length-1; i++) {
+        document.getElementById(i+1).classList.add('red')
+      }
+    }
+  }
+
+  var newData = []
+
+  ready(() => {
+    axios.get('/chain')
+      .then(({ data }) => {
+
+        const table = data.map(({ nonce, data }) => {
+          const date = new Date(data.date)
+          const dateString = date.getUTCFullYear() + "/" + (date.getUTCMonth() + 1) + "/" + date.getUTCDate()
+          const mileage = typeof (data.milleage || data.mileage) === 'string' ? (data.milleage || data.mileage) : ''
+          const service = typeof (data.milleage || data.mileage) === 'object' ? '-' : (data.service || '-')
+
+          return data
+        })
+
+        document.getElementById('table').innerHTML = table
+          .map((e, index) => `<tr>
+            <textarea id="${index}" class="textarea" style="width: 100%; height: 100px;">${JSON.stringify(e,null,2)}</textarea>
+          </tr>`)
+          .join(' ')
+
+        newData = data
+
+        var areas = document.querySelectorAll('textarea')
+        areas.forEach((area) => {
+          area.addEventListener('input', function(e) {
+            const index = Number(e.target.id)
+            // const newData = [ ...data ]
+
+            console.log({ ...newData[index] })
+
+            newData[index] = { ...newData[index], data: { ...JSON.parse(e.target.value) } } 
+
+            console.log({ ...newData[index] })
+
+            changeText(newData, index, areas.length)
+          }, false)
+        }) 
+      })
+  })
+</script>
+</body>
+
+</html>
