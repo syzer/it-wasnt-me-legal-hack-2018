@@ -191,7 +191,7 @@
     axios.get('/chain')
       .then(({ data }) => {
 
-        const table = data.map(({ data }) => {
+        const table = data.map(({ nonce, data }) => {
           const date = new Date(data.date)
           const dateString = date.getUTCFullYear() + "/" + (date.getUTCMonth() + 1) + "/" + date.getUTCDate()
           const mileage = typeof (data.milleage || data.mileage) === 'string' ? (data.milleage || data.mileage) : ''
@@ -202,9 +202,11 @@
             dateString,
             mileage,
             service,
-            approved: (data.approved || []).join(' ')
+            approved: (data.approved || []).join(' '),
+            nonce
           }
         })
+        .sort((a, b) => a.date - b.date)
 
         graph('graph', table, 'date', 'mileage', {
           color: {
@@ -223,7 +225,7 @@
             <td>${e.mileage}</td>
             <td>${e.service}</td>
             <td>10 €</td>
-            <td>${e.approved}</td>
+            <td>${e.approved || `<a href="/approve.html?nonce=${e.nonce}" class="button">Go approval</a>` }</td>
           </tr>`)
           .join(' ')
       })
