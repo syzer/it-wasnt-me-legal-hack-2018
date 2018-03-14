@@ -75,7 +75,7 @@
             </p>
             <label class="label">Color</label>
             <p class="control">
-              <input id="color" value="color" class="input" type="text" placeholder="pink">
+              <input id="color" value="pink" class="input" type="text" placeholder="pink">
             </p>
             <label class="label">initial registration</label>
             <p class="control">
@@ -94,16 +94,16 @@
     <script async type="text/javascript" src="./js/axios.js"></script>
     <script>
       document.getElementById('add').onclick = () => {
-        axios.post('/chain', { 
-          brand: document.getElementById('brand').value,
-          model: document.getElementById('model').value,
-          frame: document.getElementById('frame').value,
-          milleage: document.getElementById('milleage').value,
-          color: document.getElementById('color').value,
-        })
-        .then(() => {
+        // axios.post('/chain', {
+        //   brand: document.getElementById('brand').value,
+        //   model: document.getElementById('model').value,
+        //   frame: document.getElementById('frame').value,
+        //   milleage: document.getElementById('milleage').value,
+        //   color: document.getElementById('color').value,
+        // })
+        // .then(() => {
           window.location = '/add_data.html'
-        })
+        // })
       }
     </script>
 </body>
