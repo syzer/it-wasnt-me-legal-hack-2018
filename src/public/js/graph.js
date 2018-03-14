@@ -7442,6 +7442,8 @@ const d = {
 const icon = (iconD, bgColor, color) => (svg, x, y) => {
   const g = svg.append('g')
     .attr('transform', `translate(${x},${y})`)
+    .attr('class', iconD + ' ' + bgColor)
+    .attr('id', Math.random())
   g.append('circle')
     .attr('cx', 0)
     .attr('cy', 0)

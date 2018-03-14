@@ -19,6 +19,10 @@ circle[fill="lightgreen"] {
   display: none !important;
 }
 
-#graph > svg > g:nth-child(17) {
+#graph > svg > g:last-child(17) {
   display: none !important;
+}
+
+.yellow {
+  fill-opacity: 0.2;
 }
