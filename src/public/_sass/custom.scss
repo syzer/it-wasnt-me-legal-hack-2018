@@ -14,3 +14,11 @@
 circle[fill="lightgreen"] {
   margin-top: 100px;
 }
+
+#graph > svg > g:nth-child(16) {
+  display: none !important;
+}
+
+#graph > svg > g:nth-child(17) {
+  display: none !important;
+}

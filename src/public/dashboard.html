@@ -225,7 +225,7 @@
             <td>${e.mileage}</td>
             <td>${e.service}</td>
             <td>10 €</td>
-            <td>${e.approved || `<a href="/approve.html?nonce=${e.nonce}" class="button">Go approval</a>` }</td>
+            <td>${e.approved ? `<span class="has-text-success has-text-weight-bold">${e.approved}</span>` : `<a href="/approve.html?nonce=${e.nonce}" class="button">Go approval</a>` }</td>
           </tr>`)
           .join(' ')
       })
