@@ -206,7 +206,7 @@
           const mileage = typeof (data.milleage || data.mileage) === 'string' ? (data.milleage || data.mileage) : '-'
           const service = typeof (data.milleage || data.mileage) === 'object' ? '-' : (data.service || '-')
 
-          eturn `<tr>
+          return `<tr>
             <td>${dateString}</td>
             <td>${mileage}</td>
             <td>${service}</td>
